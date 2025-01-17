@@ -84,58 +84,85 @@ nav {
     position: relative;
     width: 100%;
     height: 100vh;
-    min-height: 600px;
     overflow: hidden;
-    background-color: #f8f8f8;
+    margin: 0;  /* マージンを0に設定 */
+    padding: 0; /* パディングも0に設定 */
 }
 
 .hero-slider {
-    position: relative;
     width: 100%;
     height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .slide {
     position: relative;
     width: 100%;
     height: 100%;
-    background: url('./images/main_visual.webp') center center no-repeat;
-    background-size: contain;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 0 10%;
-    background-color: #f8f8f8;
 }
 
-.slide-content {
-    background: rgba(0, 0, 0, 0.8);
-    padding: 4rem 5rem;
-    border-radius: 8px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    max-width: 700px;
-    border-left: 5px solid var(--accent-color);
+.slide-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('./images/pexels-thisisengineering-3861969.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-.slide h1 {
-    font-size: 3.5rem;
-    font-weight: 200;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-    color: var(--text-color);
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 1.2s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+.slide-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+    width: 100%;
+    padding: 0 20px;
 }
 
-.slide p {
-    font-size: 1.2rem;
+.slide-text p {
+    font-size: 2.5rem;
+    line-height: 1.6;
     font-weight: 300;
-    color: var(--text-color);
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 1.2s cubic-bezier(0.33, 1, 0.68, 1) 0.3s forwards;
+    letter-spacing: 0.1em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* オーバーレイ効果 */
+.slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.4)
+    );
+    z-index: 1;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .slide-text p {
+        font-size: 1.8rem;
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slide-text p {
+        font-size: 1.5rem;
+        padding: 0 10px;
+    }
 }
 
 /* アニメーションのキーフレーム */
@@ -1304,7 +1331,7 @@ footer {
     .slide-image {
         width: 100%;
         padding-top: 56.25%;
-        background: url('./images/main_visual.webp') center center no-repeat;
+        background: url('./images/pexels-thisisengineering-3861969.jpg') center center no-repeat;
         background-size: contain;
     }
 
@@ -1364,4 +1391,148 @@ h2 {
 /* メッセージセクションのグリッド間隔調整 */
 .message-content {
     gap: 3rem;
+}
+
+/* ローディング関連のスタイル */
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.8s;
+}
+
+.loading-content {
+    text-align: center;
+    position: relative;
+}
+
+.progress-bar {
+    width: 200px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 30px auto;
+    position: relative;
+    overflow: visible;
+    --progress: 0;
+}
+
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: calc(var(--progress) * 1%);
+    background: #fff;
+    transition: width 0.2s ease-out;
+}
+
+.progress-bar::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 0;
+    height: 10px;
+    width: calc(var(--progress) * 1%);
+    background: rgba(255, 255, 255, 0.2);
+    transition: width 0.2s ease-out;
+}
+
+#progress {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 16px;
+    color: #fff;
+    letter-spacing: 0.2em;
+    margin-top: 20px;
+    opacity: 0.8;
+    transition: all 0.3s;
+    min-width: 4em;
+    display: inline-block;
+}
+
+.loading-text {
+    color: #fff;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 24px;
+    letter-spacing: 0.3em;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+/* メインビジュアル関連のスタイル */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-slider {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('./images/pexels-thisisengineering-3861969.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.slide-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.slide-text p {
+    font-size: 2.5rem;
+    line-height: 1.6;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* オーバーレイ効果 */
+.slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.4)
+    );
+    z-index: 1;
 }

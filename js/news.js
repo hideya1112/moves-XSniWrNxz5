@@ -3,8 +3,49 @@ const SERVICE_DOMAIN = 'moves';
 const END_POINT = 'news';
 const ITEMS_PER_PAGE = 9; // 1ページあたりの表示件数
 
+let currentProgress = 0;
+let targetProgress = 0;
+let animationFrameId = null;
+
+const loadingElement = document.getElementById('loading');
+const progressElement = document.getElementById('progress');
+
+function animateProgress() {
+    if (Math.abs(currentProgress - targetProgress) < 0.1) {
+        currentProgress = targetProgress;
+        updateProgressUI(currentProgress);
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+        return;
+    }
+
+    // イージングの係数を調整してよりスムーズに
+    currentProgress += (targetProgress - currentProgress) * 0.1;
+    updateProgressUI(currentProgress);
+    animationFrameId = requestAnimationFrame(animateProgress);
+}
+
+function updateProgress(value) {
+    targetProgress = Math.min(value, 100);
+    if (!animationFrameId) {
+        animationFrameId = requestAnimationFrame(animateProgress);
+    }
+}
+
+function hideLoading() {
+    loadingElement.style.opacity = '0';
+    setTimeout(() => {
+        loadingElement.style.display = 'none';
+    }, 800);
+}
+
 async function fetchNews(page = 1) {
     try {
+        currentProgress = 0;  // 初期化
+        updateProgress(0);    // 0%から開始
+        await new Promise(resolve => setTimeout(resolve, 300));
+        
+        updateProgress(20);   // フェッチ開始
         const response = await fetch(
             `https://${SERVICE_DOMAIN}.microcms.io/api/v1/${END_POINT}?limit=${ITEMS_PER_PAGE}&offset=${(page - 1) * ITEMS_PER_PAGE}`,
             {
@@ -14,12 +55,26 @@ async function fetchNews(page = 1) {
             }
         );
         
+        updateProgress(50);   // データ受信完了
+        await new Promise(resolve => setTimeout(resolve, 200));
+        
         const data = await response.json();
+        updateProgress(70);   // JSON解析完了
+        await new Promise(resolve => setTimeout(resolve, 200));
+        
         displayNews(data.contents);
+        updateProgress(85);   // 表示処理開始
+        await new Promise(resolve => setTimeout(resolve, 200));
+        
         displayPagination(data.totalCount, page);
         setupModalHandlers(data.contents);
+        
+        updateProgress(100);  // 全処理完了
+        await new Promise(resolve => setTimeout(resolve, 300));
+        hideLoading();
     } catch (error) {
         console.error('ニュースの取得に失敗しました:', error);
+        hideLoading();
     }
 }
 
@@ -170,6 +225,22 @@ function openModal(newsData) {
         modal.classList.add('show');
     });
     document.body.style.overflow = 'hidden';
+}
+
+function updateProgressUI(progress) {
+    // プログレス数値の更新
+    progressElement.textContent = `${Math.round(progress)}%`;
+    
+    // プログレスバーの更新
+    const progressBar = document.querySelector('.progress-bar');
+    if (progressBar) {
+        // afterとbeforeの両方の要素に直接スタイルを適用
+        const afterBar = progressBar.querySelector('::after');
+        const beforeBar = progressBar.querySelector('::before');
+        
+        // スタイルを直接設定
+        progressBar.style.setProperty('--progress', Math.round(progress));
+    }
 }
 
 // 初期化時にモーダルのセットアップを行う
