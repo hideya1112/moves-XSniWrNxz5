@@ -6,8 +6,8 @@
 }
 
 html {
+    scroll-padding-top: 100px; /* ヘッダーの高さ + 余白 */
     scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* ヘッダーの高さ分を確保 */
 }
 
 * {
@@ -198,7 +198,7 @@ nav {
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
     .slide h1 {
-        font-size: 2.5rem;
+        font-size: 1.6rem;
     }
     
     .slide p {
@@ -322,7 +322,7 @@ nav {
 }
 
 section {
-    padding: 4rem 2rem;
+    padding: 6rem 2rem 4rem; /* 上部のパディングを増やして、ジャンプ時の位置を調整 */
 }
 
 h2 {
@@ -689,7 +689,7 @@ h2 {
 /* セクションのスペーシング調整 */
 @media (max-width: 768px) {
     section {
-        padding: 3rem 1rem;
+        padding: 5rem 1.5rem 3rem; /* モバイルでの余白を調整 */
     }
 
     h2 {
@@ -1354,185 +1354,6 @@ footer {
     animation: fadeInUp 1.2s cubic-bezier(0.33, 1, 0.68, 1) 0.8s forwards;
 }
 
-/* レスポンシブ対応のベース調整 */
-@media (max-width: 768px) {
-    section {
-        padding: 3rem 1rem;
-    }
-
-    h2 {
-        font-size: 1.8rem;
-        margin-bottom: 2rem;
-        letter-spacing: 0.1em;
-    }
-
-    /* ニュースセクション調整 */
-    #news {
-        padding: 2rem 1rem;
-    }
-
-    .news-grid {
-        gap: 1rem;
-    }
-
-    .news-content {
-        padding: 1rem;
-    }
-
-    .pagination {
-        margin-top: 2rem;
-    }
-
-    /* サービスセクション調整 */
-    #services {
-        padding: 2rem 1rem;
-    }
-
-    .services-grid {
-        gap: 1rem;
-    }
-
-    .service-card {
-        padding: 1.5rem 1rem;
-    }
-
-    .service-card h3 {
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-    }
-
-    .service-icon {
-        margin-bottom: 1rem;
-    }
-
-    /* メッセージセクション調整 */
-    #message {
-        padding: 2rem 1rem;
-    }
-
-    .message-content {
-        gap: 2rem;
-    }
-
-    .message-text h3 {
-        font-size: 1.6rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .message-text p {
-        margin-bottom: 1rem;
-        line-height: 1.8;
-    }
-
-    .ceo-info {
-        margin-top: 1.5rem;
-    }
-
-    /* フッター調整 */
-    footer {
-        padding: 2rem 1rem 1rem;
-        margin-top: 2rem;
-    }
-
-    .footer-main {
-        gap: 2rem;
-        margin-bottom: 2rem;
-    }
-
-    .footer-nav {
-        gap: 1.5rem;
-    }
-
-    .footer-nav-column h3 {
-        margin-bottom: 1rem;
-    }
-
-    .footer-nav-column ul li {
-        margin-bottom: 0.8rem;
-    }
-
-    .footer-bottom {
-        padding: 1rem;
-        margin-top: 1rem;
-    }
-}
-
-/* さらに小さい画面サイズの調整 */
-@media (max-width: 481px) {
-    .hero {
-        padding-top: 100px;
-        padding-bottom: 1.5rem;
-    }
-
-    .slide {
-        padding: 0 1rem;
-        padding-top: 75%;
-    }
-
-    .slide-text {
-        padding: 0.5rem 0 0;
-    }
-
-    .slide h1 {
-        display: none;
-    }
-
-    .slide p {
-        font-size: 0.95rem;
-    }
-}
-
-/* 通常のモバイルサイズ（481px以上768px以下）の調整 */
-@media (min-width: 481px) and (max-width: 768px) {
-    .slide-text {
-        padding: 0.5rem 0 0;
-    }
-
-    .slide p {
-        font-size: 0.95rem;
-        line-height: 1.6;
-        text-align: center;
-        letter-spacing: 0.05em;
-    }
-}
-
-/* ヒーローセクションのレスポンシブ調整 */
-@media (max-width: 768px) {
-    .hero {
-        height: 80vh;
-        min-height: 400px;
-    }
-
-    .slide-text p {
-        font-size: 1.6rem;
-        line-height: 1.8;
-        padding: 0 1.5rem;
-    }
-}
-
-/* さらに小さい画面サイズの調整 */
-@media (max-width: 481px) {
-    .hero {
-        padding-top: 100px;
-        padding-bottom: 1.5rem;
-    }
-
-    .slide {
-        padding: 0 1rem;
-    }
-
-    .slide-image {
-        padding-top: 75%;
-    }
-
-    .slide-text {
-        padding-top: 0.3rem;
-    }
-
-    .slide p {
-        font-size: 0.95rem;
-    }
-}
 
 /* グリッドの余白調整 */
 .services-grid, .clients-grid, .news-grid {
@@ -1904,5 +1725,185 @@ h2 {
     .service-card p {
         font-size: 0.9rem;
         line-height: 1.6;
+    }
+}
+
+/* レスポンシブ対応のベース調整 */
+@media (max-width: 768px) {
+    section {
+        padding: 5rem 1.5rem 3rem; /* モバイルでの余白を調整 */
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+        letter-spacing: 0.1em;
+    }
+
+    /* ニュースセクション調整 */
+    #news {
+        padding: 2rem 1rem;
+    }
+
+    .news-grid {
+        gap: 1rem;
+    }
+
+    .news-content {
+        padding: 1rem;
+    }
+
+    .pagination {
+        margin-top: 2rem;
+    }
+
+    /* サービスセクション調整 */
+    #services {
+        padding: 2rem 1rem;
+    }
+
+    .services-grid {
+        gap: 1rem;
+    }
+
+    .service-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .service-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .service-icon {
+        margin-bottom: 1rem;
+    }
+
+    /* メッセージセクション調整 */
+    #message {
+        padding: 2rem 1rem;
+    }
+
+    .message-content {
+        gap: 2rem;
+    }
+
+    .message-text h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .message-text p {
+        margin-bottom: 1rem;
+        line-height: 1.8;
+    }
+
+    .ceo-info {
+        margin-top: 1.5rem;
+    }
+
+    /* フッター調整 */
+    footer {
+        padding: 2rem 1rem 1rem;
+        margin-top: 2rem;
+    }
+
+    .footer-main {
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .footer-nav {
+        gap: 1.5rem;
+    }
+
+    .footer-nav-column h3 {
+        margin-bottom: 1rem;
+    }
+
+    .footer-nav-column ul li {
+        margin-bottom: 0.8rem;
+    }
+
+    .footer-bottom {
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+}
+
+/* さらに小さい画面サイズの調整 */
+@media (max-width: 481px) {
+    .hero {
+        padding-top: 100px;
+        padding-bottom: 1.5rem;
+    }
+
+    .slide {
+        padding: 0 1rem;
+        padding-top: 75%;
+    }
+
+    .slide-text {
+        padding: 0.5rem 0 0;
+    }
+
+    .slide h1 {
+        display: none;
+    }
+
+    .slide p {
+        font-size: 0.95rem;
+    }
+}
+
+/* 通常のモバイルサイズ（481px以上768px以下）の調整 */
+@media (min-width: 481px) and (max-width: 768px) {
+    .slide-text {
+        padding: 0.5rem 0 0;
+    }
+
+    .slide p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        text-align: center;
+        letter-spacing: 0.05em;
+    }
+}
+
+/* ヒーローセクションのレスポンシブ調整 */
+@media (max-width: 768px) {
+    .hero {
+        height: 80vh;
+        min-height: 400px;
+    }
+
+    .slide-text p {
+        font-size: 2.5rem;
+        line-height: 1.8;
+        padding: 0 1.5rem;
+    }
+}
+
+/* さらに小さい画面サイズの調整 */
+@media (max-width: 481px) {
+    .hero {
+        padding-top: 100px;
+        padding-bottom: 1.5rem;
+    }
+
+    .slide {
+        padding: 0 1rem;
+    }
+
+    .slide-image {
+        padding-top: 75%;
+    }
+
+    .slide-text {
+        padding-top: 0.3rem;
+    }
+
+    .slide p {
+        font-size: 1.6rem;
     }
 }
