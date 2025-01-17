@@ -126,8 +126,8 @@ nav {
     text-align: center;
     color: #fff;
     z-index: 2;
-    width: 100%;
-    padding: 0 20px;
+    width: 90%;
+    max-width: 800px;
 }
 
 .slide-text p {
@@ -625,18 +625,29 @@ h2 {
     }
 }
 
-/* メインビジュアルの調整 */
+/* メインビジュアルのスマホ調整 */
 @media (max-width: 768px) {
     .hero {
         height: 80vh;
         min-height: 400px;
-        padding-top: 60px;
+    }
+
+    .slide-text {
+        width: 85%;
+        max-width: 400px;
     }
 
     .slide-text p {
-        font-size: 1.6rem;
-        line-height: 1.8;
-        padding: 0 1.5rem;
+        font-size: 4vw; /* サイズをさらに小さく */
+        line-height: 1.4;
+        letter-spacing: 0.05em;
+    }
+
+    /* brタグの前後の余白を詰める */
+    .slide-text p br {
+        display: block;
+        content: "";
+        margin: -0.3em 0;
     }
 }
 
@@ -647,8 +658,8 @@ h2 {
     }
 
     .slide-text p {
-        font-size: 1.3rem;
-        padding: 0 1rem;
+        font-size: 4.5vw; /* より小さい画面でも適度なサイズを維持 */
+        line-height: 1.3;
     }
 }
 
@@ -707,12 +718,12 @@ footer {
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
+    text-align: center;
 }
 
 .footer-main {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 6rem;
+    display: flex;
+    justify-content: center;
     margin-bottom: 2rem;
     padding: 0 1rem;
 }
@@ -741,40 +752,35 @@ footer {
 .footer-nav {
     display: flex;
     justify-content: center;
-    gap: 2rem;
-    padding: 0.5rem 0;
+    gap: 4rem;
+    padding: 0;
+    margin: 0 auto;
 }
 
 .footer-nav-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex: 0 1 auto;
+    text-align: center;
 }
 
 .footer-nav-column h3 {
     font-size: 0.8rem;
     color: #666;
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
 }
 
 .footer-nav-column ul {
     list-style: none;
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 0.8rem;
     margin: 0;
     padding: 0;
+    align-items: center;
 }
 
 .footer-nav-column ul li {
-    position: relative;
     margin: 0;
-}
-
-.footer-nav-column ul li:not(:last-child)::after {
-    content: '/';
-    position: absolute;
-    right: -0.7rem;
-    color: #ccc;
 }
 
 .footer-nav-column ul li a {
@@ -797,12 +803,30 @@ footer {
     .footer-nav {
         flex-direction: column;
         gap: 1.5rem;
+        align-items: center;
+    }
+
+    .footer-nav-column {
+        width: 100%;
+        text-align: center;
     }
 
     .footer-nav-column ul {
+        flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
         gap: 0.8rem 1.2rem;
+    }
+
+    .footer-nav-column ul li {
+        position: relative;
+    }
+
+    .footer-nav-column ul li:not(:last-child)::after {
+        content: '/';
+        position: absolute;
+        right: -0.7rem;
+        color: #ccc;
     }
 
     .footer-nav-column ul li a {
@@ -1641,8 +1665,8 @@ h2 {
     text-align: center;
     color: #fff;
     z-index: 2;
-    width: 100%;
-    padding: 0 20px;
+    width: 90%;
+    max-width: 800px;
 }
 
 .slide-text p {
