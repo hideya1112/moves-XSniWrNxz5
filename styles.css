@@ -41,24 +41,28 @@ nav {
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 300;
-    letter-spacing: 2px;
+    letter-spacing: 0.1em;
     text-decoration: none;
     color: var(--text-color);
     display: flex;
     align-items: center;
+    font-family: 'Noto Serif JP', serif;
+    transition: color 0.3s ease;
+}
+
+.logo:hover {
+    color: var(--accent-color);
 }
 
 .logo-image {
-    height: 40px;
-    width: auto;
-    display: block;
+    display: none;
 }
 
 @media (max-width: 768px) {
-    .logo-image {
-        height: 30px;
+    .logo {
+        font-size: 1rem;
     }
 }
 
@@ -202,9 +206,10 @@ nav {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     padding: 0 1rem;
+    transition: opacity 0.3s ease;
 }
 
 .news-card {
@@ -294,18 +299,23 @@ nav {
 }
 
 /* レスポンシブ対応 */
+@media (max-width: 1024px) {
+    .news-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
     .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .news-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    #news {
-        padding: 6rem 1rem;
-    }
-
-    .news-content {
-        padding: 1.5rem;
+        gap: 1rem;
     }
 }
 
@@ -1400,17 +1410,34 @@ h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #1a1a1a;
+    background: rgba(26, 26, 26, 0.95);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    transition: opacity 0.8s;
+    transition: opacity 0.5s ease;
+    backdrop-filter: blur(5px);
 }
 
 .loading-content {
     text-align: center;
     position: relative;
+    animation: loadingPulse 2s infinite;
+}
+
+@keyframes loadingPulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.02);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .progress-bar {
@@ -1431,7 +1458,8 @@ h2 {
     height: 100%;
     width: calc(var(--progress) * 1%);
     background: #fff;
-    transition: width 0.2s ease-out;
+    transition: width 0.3s ease-out;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .progress-bar::before {
@@ -1442,7 +1470,8 @@ h2 {
     height: 10px;
     width: calc(var(--progress) * 1%);
     background: rgba(255, 255, 255, 0.2);
-    transition: width 0.2s ease-out;
+    transition: width 0.3s ease-out;
+    filter: blur(3px);
 }
 
 #progress {

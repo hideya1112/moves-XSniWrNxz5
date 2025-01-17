@@ -1,7 +1,7 @@
 const API_KEY = 'hoFfNFSqLE9WzeZgaJIP1Hz3GxGrJfv4HMOL';
 const SERVICE_DOMAIN = 'moves';
 const END_POINT = 'news';
-const ITEMS_PER_PAGE = 9; // 1ページあたりの表示件数
+const ITEMS_PER_PAGE = 8; // 1ページあたりの表示件数を8に変更
 
 let currentProgress = 0;
 let targetProgress = 0;
@@ -41,8 +41,21 @@ function hideLoading() {
 
 async function fetchNews(page = 1) {
     try {
+        // ニュースセクションの位置を取得
+        const newsSection = document.querySelector('#news');
+        
+        // ローディングの表示
+        loadingElement.style.display = 'flex';
+        loadingElement.style.opacity = '1';
+        
         currentProgress = 0;  // 初期化
         updateProgress(0);    // 0%から開始
+        
+        // ページ2以降の場合、newsセクションまでスクロール
+        if (page > 1) {
+            newsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        
         await new Promise(resolve => setTimeout(resolve, 300));
         
         updateProgress(20);   // フェッチ開始
@@ -56,37 +69,44 @@ async function fetchNews(page = 1) {
         );
         
         updateProgress(50);   // データ受信完了
-        await new Promise(resolve => setTimeout(resolve, 200));
-        
         const data = await response.json();
         updateProgress(70);   // JSON解析完了
-        await new Promise(resolve => setTimeout(resolve, 200));
         
+        // ニュースグリッドをフェードアウト
+        const newsGrid = document.querySelector('.news-grid');
+        newsGrid.style.opacity = '0';
+        await new Promise(resolve => setTimeout(resolve, 300));
+        
+        // コンテンツをクリアして新しい記事を表示
+        newsGrid.innerHTML = '';
         displayNews(data.contents);
-        updateProgress(85);   // 表示処理開始
-        await new Promise(resolve => setTimeout(resolve, 200));
         
+        // ニュースグリッドをフェードイン
+        setTimeout(() => {
+            newsGrid.style.opacity = '1';
+        }, 100);
+        
+        updateProgress(85);   // 表示処理開始
+        
+        // ページネーションを表示
         displayPagination(data.totalCount, page);
         setupModalHandlers(data.contents);
         
         updateProgress(100);  // 全処理完了
         await new Promise(resolve => setTimeout(resolve, 300));
         hideLoading();
+        
     } catch (error) {
         console.error('ニュースの取得に失敗しました:', error);
         hideLoading();
     }
 }
 
-function displayNews(newsItems, currentPage = 1) {
+function displayNews(newsItems) {
     const newsGrid = document.querySelector('.news-grid');
     newsGrid.innerHTML = '';
     
-    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-    const endIndex = startIndex + ITEMS_PER_PAGE;
-    const currentPageItems = newsItems.slice(startIndex, endIndex);
-
-    currentPageItems.forEach(news => {
+    newsItems.forEach(news => {
         const date = new Date(news.publishedAt);
         const formattedDate = `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
         
@@ -105,12 +125,12 @@ function displayNews(newsItems, currentPage = 1) {
                 <span class="read-more">READ MORE</span>
             </div>
         `;
-        
+
         // カード全体のクリックイベントを追加
         newsCard.style.cursor = 'pointer';
         newsCard.addEventListener('click', (e) => {
             e.preventDefault();
-            e.stopPropagation(); // イベントの伝播を停止
+            e.stopPropagation();
             const newsData = {
                 date: formattedDate,
                 tag: news.tag,
@@ -122,9 +142,6 @@ function displayNews(newsItems, currentPage = 1) {
         
         newsGrid.appendChild(newsCard);
     });
-
-    // ページネーションの表示を更新
-    displayPagination(newsItems.length, currentPage);
 }
 
 function setupModalHandlers() {
