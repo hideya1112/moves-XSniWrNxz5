@@ -742,13 +742,13 @@ footer {
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
+    padding: 0 2rem;  /* 左右の余白を追加 */
 }
 
 .footer-main {
     display: flex;
     justify-content: center;
     margin-bottom: 2rem;
-    padding: 0 1rem;
 }
 
 .footer-info {
@@ -775,13 +775,12 @@ footer {
 .footer-nav {
     display: flex;
     justify-content: center;
-    gap: 4rem;
+    gap: 2rem;
     padding: 0;
     margin: 0 auto;
 }
 
 .footer-nav-column {
-    flex: 0 1 auto;
     text-align: center;
 }
 
@@ -789,21 +788,28 @@ footer {
     font-size: 0.8rem;
     color: #666;
     margin-bottom: 1rem;
-    text-align: center;
 }
 
 .footer-nav-column ul {
     list-style: none;
     display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
+    gap: 1.2rem;
     margin: 0;
     padding: 0;
-    align-items: center;
+    justify-content: center;
 }
 
 .footer-nav-column ul li {
+    position: relative;
     margin: 0;
+}
+
+/* スラッシュの区切り */
+.footer-nav-column ul li:not(:last-child)::after {
+    content: '/';
+    position: absolute;
+    right: -0.8rem;
+    color: #ccc;
 }
 
 .footer-nav-column ul li a {
@@ -1122,7 +1128,7 @@ footer {
     gap: 4rem;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 1rem;
 }
 
 .message-text {
