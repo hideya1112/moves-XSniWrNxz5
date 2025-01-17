@@ -116,6 +116,7 @@ nav {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    animation: zoomAndPan 20s ease-in-out infinite;  /* ゆっくりとしたズームとパン効果 */
 }
 
 .slide-text {
@@ -128,6 +129,8 @@ nav {
     z-index: 2;
     width: 90%;
     max-width: 800px;
+    opacity: 0;
+    animation: fadeInText 2s ease-out forwards;
 }
 
 .slide-text p {
@@ -152,6 +155,7 @@ nav {
         rgba(0, 0, 0, 0.4)
     );
     z-index: 1;
+    animation: gradientShift 10s ease-in-out infinite;
 }
 
 /* レスポンシブ対応 */
@@ -218,7 +222,26 @@ nav {
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
     overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1.2s cubic-bezier(0.42, 0, 0.58, 1);
+    will-change: opacity, transform;
 }
+
+.news-card.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 各行のディレイをより長く設定 */
+.news-card:nth-child(1) { transition-delay: 0.1s; }
+.news-card:nth-child(2) { transition-delay: 0.2s; }
+.news-card:nth-child(3) { transition-delay: 0.3s; }
+.news-card:nth-child(4) { transition-delay: 0.4s; }
+.news-card:nth-child(5) { transition-delay: 0.5s; }
+.news-card:nth-child(6) { transition-delay: 0.6s; }
+.news-card:nth-child(7) { transition-delay: 0.7s; }
+.news-card:nth-child(8) { transition-delay: 0.8s; }
 
 .news-card:hover {
     transform: translateY(-5px);
@@ -1123,13 +1146,15 @@ footer {
 
 .message-image {
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 
 .message-image img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    border-radius: 0;
 }
 
 .ceo-info {
@@ -1655,6 +1680,7 @@ h2 {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    animation: zoomAndPan 20s ease-in-out infinite;  /* ゆっくりとしたズームとパン効果 */
 }
 
 .slide-text {
@@ -1667,6 +1693,8 @@ h2 {
     z-index: 2;
     width: 90%;
     max-width: 800px;
+    opacity: 0;
+    animation: fadeInText 2s ease-out forwards;
 }
 
 .slide-text p {
@@ -1691,6 +1719,57 @@ h2 {
         rgba(0, 0, 0, 0.4)
     );
     z-index: 1;
+    animation: gradientShift 10s ease-in-out infinite;
+}
+
+/* ズームとパンのアニメーション */
+@keyframes zoomAndPan {
+    0% {
+        transform: scale(1) translate(0, 0);
+    }
+    50% {
+        transform: scale(1.1) translate(-1%, -1%);  /* ゆっくりとズームインしながら少し移動 */
+    }
+    100% {
+        transform: scale(1) translate(0, 0);
+    }
+}
+
+/* テキストのフェードインアニメーション */
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -30%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* オーバーレイのグラデーションアニメーション */
+@keyframes gradientShift {
+    0% {
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.2),
+            rgba(0, 0, 0, 0.4)
+        );
+    }
+    50% {
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.5)
+        );
+    }
+    100% {
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.2),
+            rgba(0, 0, 0, 0.4)
+        );
+    }
 }
 
 /* ニュースセクションのモバイル調整 */
