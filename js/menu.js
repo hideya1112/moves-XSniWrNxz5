@@ -1,21 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
-    const navLinksItems = document.querySelectorAll('.nav-links a');
+    const links = document.querySelectorAll('.nav-links li');
 
-    // ハンバーガーメニューのクリックイベント
     hamburger.addEventListener('click', () => {
+        // ナビゲーションの表示/非表示を切り替え
+        navLinks.classList.toggle('open');
         hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
-        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+
+        // リンクのアニメーション
+        links.forEach((link, index) => {
+            if (link.style.animation) {
+                link.style.animation = '';
+            } else {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+            }
+        });
     });
 
-    // メニュー項目クリック時の処理
-    navLinksItems.forEach(item => {
-        item.addEventListener('click', () => {
+    // メニューリンクをクリックしたらメニューを閉じる
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
             hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
-            document.body.style.overflow = 'auto';
+            links.forEach(link => {
+                link.style.animation = '';
+            });
         });
     });
 }); 

@@ -122,7 +122,6 @@ function displayNews(newsItems) {
                 <time datetime="${news.publishedAt}">${formattedDate}</time>
                 <span class="news-tag">${news.tag}</span>
                 <h3>${news.title}</h3>
-                <span class="read-more">READ MORE</span>
             </div>
         `;
 
