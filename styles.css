@@ -727,16 +727,19 @@ h2 {
 
 /* フッターのスタイル */
 footer {
-    background-color: #f8f8f8;
-    padding: 2rem 1rem 1rem;
-    margin-top: 2rem;
+    background: linear-gradient(180deg, 
+        #574080 0%,
+        #432e63 50%,
+        #2d1f43 100%
+    );
+    padding: 3rem 2rem 1rem;
+    margin-top: 0;
+    color: #fff;
 }
 
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
-    text-align: center;
-    padding: 0 2rem;  /* 左右の余白を追加 */
 }
 
 .footer-main {
@@ -780,8 +783,9 @@ footer {
 
 .footer-nav-column h3 {
     font-size: 0.8rem;
-    color: #666;
+    color: rgba(255, 255, 255, 0.9);
     margin-bottom: 1rem;
+    font-weight: normal;
 }
 
 .footer-nav-column ul {
@@ -808,13 +812,13 @@ footer {
 
 .footer-nav-column ul li a {
     font-size: 0.8rem;
-    color: var(--text-color);
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .footer-nav-column ul li a:hover {
-    color: var(--accent-color);
+    color: #fff;
 }
 
 /* フッターのモバイル調整 */
@@ -870,7 +874,7 @@ footer {
 }
 
 .footer-bottom {
-    border-top: 1px solid #eee;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 1rem;
     text-align: center;
     margin-top: 0;
@@ -878,7 +882,7 @@ footer {
 
 .copyright {
     font-size: 0.8rem;
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
     letter-spacing: 1px;
 }
 
@@ -886,7 +890,6 @@ footer {
 @media (max-width: 768px) {
     footer {
         padding: 2rem 1rem 1rem;
-        margin-top: 2rem;
     }
 
     .footer-main {
@@ -1106,8 +1109,8 @@ footer {
 
 /* 代表メッセージのスタイル */
 #message {
-    padding: 6rem 2rem;
     background-color: var(--background-color);
+    padding: 6rem 2rem;
 }
 
 .message-container {
@@ -1805,7 +1808,6 @@ h2 {
     /* フッター調整 */
     footer {
         padding: 2rem 1rem 1rem;
-        margin-top: 2rem;
     }
 
     .footer-main {
@@ -1827,7 +1829,6 @@ h2 {
 
     .footer-bottom {
         padding: 1rem;
-        margin-top: 1rem;
     }
 }
 
