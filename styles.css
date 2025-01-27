@@ -1,8 +1,8 @@
 :root {
     --primary-color: #333333;
-    --accent-color: #9c8f7f;
-    --background-color: #ffffff;
-    --text-color: #333333;
+    --accent-color: #c4a36d;
+    --background-color: #fff;
+    --text-color: #333;
 }
 
 html {
@@ -17,10 +17,11 @@ html {
 }
 
 body {
-    font-family: 'Noto Serif JP', serif;
+    font-family: 'Shippori Mincho', serif;
     color: var(--text-color);
     background-color: var(--background-color);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 header {
