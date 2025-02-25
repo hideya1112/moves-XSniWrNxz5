@@ -1110,23 +1110,24 @@ footer {
 /* 代表メッセージのスタイル */
 #message {
     background-color: var(--background-color);
-    padding: 6rem 2rem;
+    padding: 5rem 2rem;
 }
 
 .message-container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 0 1rem;
 }
 
 .message-content {
     display: flex;
     justify-content: center;
-    padding: 0 1rem;
 }
 
 .message-text {
-    max-width: 600px;
+    max-width: 800px;
     text-align: center;
+    margin: 0 auto;
 }
 
 .message-text h3 {
@@ -1142,15 +1143,18 @@ footer {
     line-height: 2;
     font-size: 1rem;
     text-align: justify;
-}
-
-.message-text p:last-of-type {
-    margin-bottom: 1.2rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 0.5rem;
 }
 
 .ceo-info {
     margin-top: 2rem;
     text-align: right;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 0.5rem;
 }
 
 .ceo-info p {
@@ -1167,10 +1171,14 @@ footer {
     color: #666;
 }
 
-/* メッセージセクションのモバイル調整 */
+/* メッセージセクションのタブレット調整 */
 @media (max-width: 768px) {
     #message {
         padding: 4rem 1.5rem;
+    }
+
+    .message-container {
+        padding: 0 1rem;
     }
 
     .message-text h3 {
@@ -1182,59 +1190,36 @@ footer {
         font-size: 0.95rem;
         line-height: 1.8;
         margin-bottom: 1.2rem;
-    }
-
-    .message-text p:last-of-type {
-        margin-bottom: 0.8rem;
-    }
-
-    .ceo-info {
-        margin-top: 1.2rem;
-    }
-
-    .ceo-info p {
-        font-size: 1rem;
-        line-height: 1.3;
-        margin-bottom: 0.2rem;
-    }
-
-    .ceo-info p:last-child {
-        font-size: 0.9rem;
+        padding: 0 1rem;
     }
 }
 
+/* メッセージセクションのスマホ調整 */
 @media (max-width: 480px) {
     #message {
         padding: 3rem 1rem;
     }
 
+    .message-container {
+        padding: 0 0.5rem;
+    }
+
     .message-text h3 {
         font-size: 1.6rem;
         margin-bottom: 1.8rem;
+        padding: 0 0.5rem;
     }
 
     .message-text p {
         font-size: 0.9rem;
         line-height: 1.7;
         margin-bottom: 1rem;
-    }
-
-    .message-text p:last-of-type {
-        margin-bottom: 0.6rem;
+        padding: 0 1.5rem;
     }
 
     .ceo-info {
-        margin-top: 1rem;
-    }
-
-    .ceo-info p {
-        font-size: 0.9rem;
-        line-height: 1.2;
-        margin-bottom: 0.15rem;
-    }
-
-    .ceo-info p:last-child {
-        font-size: 0.85rem;
+        margin-top: 1.5rem;
+        padding: 0 1.5rem;
     }
 }
 
