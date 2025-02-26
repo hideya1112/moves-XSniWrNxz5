@@ -316,7 +316,7 @@ nav {
 }
 
 section {
-    padding: 6rem 2rem 4rem; /* 上部のパディングを増やして、ジャンプ時の位置を調整 */
+    padding: 6rem 0;
 }
 
 h2 {
@@ -1043,7 +1043,7 @@ footer {
 
 /* サービスセクションのスタイル */
 #services {
-    background-color: #f8f8f8;
+    background-color: #f8f9fa;
     padding: 6rem 2rem;
 }
 
@@ -1053,7 +1053,7 @@ footer {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
-    padding: 0 1rem;
+    padding: 0 2rem;
 }
 
 .service-card {
@@ -1109,52 +1109,40 @@ footer {
 
 /* 代表メッセージのスタイル */
 #message {
-    background-color: var(--background-color);
+    background-color: #fff;
     padding: 5rem 2rem;
 }
 
 .message-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 2rem;
 }
 
 .message-content {
-    display: flex;
-    justify-content: center;
+    display: block;
 }
 
 .message-text {
     max-width: 800px;
-    text-align: center;
     margin: 0 auto;
-}
-
-.message-text h3 {
-    font-size: 2.2rem;
-    font-weight: 300;
-    margin-bottom: 3rem;
-    letter-spacing: 0.1em;
-    line-height: 1.6;
 }
 
 .message-text p {
     margin-bottom: 1.8rem;
     line-height: 2;
     font-size: 1rem;
-    text-align: justify;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 0.5rem;
+    text-align: left;
+    padding: 0;
 }
 
 .ceo-info {
-    margin-top: 2rem;
+    margin-top: 3rem;
     text-align: right;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0 0.5rem;
+    padding: 0;
 }
 
 .ceo-info p {
@@ -1173,53 +1161,34 @@ footer {
 
 /* メッセージセクションのタブレット調整 */
 @media (max-width: 768px) {
-    #message {
-        padding: 4rem 1.5rem;
-    }
-
     .message-container {
-        padding: 0 1rem;
-    }
-
-    .message-text h3 {
-        font-size: 1.8rem;
-        margin-bottom: 2rem;
+        padding: 0 1.5rem;
     }
 
     .message-text p {
         font-size: 0.95rem;
         line-height: 1.8;
         margin-bottom: 1.2rem;
-        padding: 0 1rem;
+        padding: 0;
     }
 }
 
 /* メッセージセクションのスマホ調整 */
 @media (max-width: 480px) {
-    #message {
-        padding: 3rem 1rem;
-    }
-
     .message-container {
-        padding: 0 0.5rem;
-    }
-
-    .message-text h3 {
-        font-size: 1.6rem;
-        margin-bottom: 1.8rem;
-        padding: 0 0.5rem;
+        padding: 0 1rem;
     }
 
     .message-text p {
         font-size: 0.9rem;
         line-height: 1.7;
         margin-bottom: 1rem;
-        padding: 0 1.5rem;
+        padding: 0;
     }
 
     .ceo-info {
-        margin-top: 1.5rem;
-        padding: 0 1.5rem;
+        margin-top: 2rem;
+        padding: 0;
     }
 }
 
@@ -1340,7 +1309,7 @@ footer {
 /* グリッドの余白調整 */
 .services-grid, .clients-grid, .news-grid {
     gap: 1.5rem;
-    padding: 0 1rem;
+    padding: 0 2rem;
 }
 
 /* 見出しの下マージン調整 */
@@ -1891,7 +1860,7 @@ h2 {
 /* Company Section */
 #company {
     padding: 4rem 2rem;
-    background-color: #f8f8f8;
+    background-color: #fff;
 }
 
 .company-container {
@@ -2002,7 +1971,7 @@ h2 {
 /* Recruit Section */
 #recruit {
     padding: 5rem 2rem;
-    background-color: #f9f9f9;
+    background-color: #f8f9fa;
 }
 
 .recruit-container {
@@ -2136,26 +2105,23 @@ h2 {
 
 .recruit-message {
     max-width: 800px;
-    margin: 0 auto 3rem;
-    text-align: left;
-    padding: 0 1rem 2rem;
+    margin: 0 auto 4rem;
+    padding: 0 2rem;
+    text-align: center;
 }
 
 .recruit-message h3 {
-    font-size: 1.6rem;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-    font-weight: 400;
-    letter-spacing: 0.05em;
-    text-align: left;
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
 .recruit-message p {
-    font-size: 1rem;
-    line-height: 1.8;
+    font-size: 1.1rem;
     margin-bottom: 1rem;
-    color: #555;
-    text-align: left;
+    line-height: 1.8;
+    text-align: center;
 }
 
 @media (max-width: 768px) {
@@ -2172,5 +2138,74 @@ h2 {
     .recruit-message p {
         font-size: 0.95rem;
         line-height: 1.7;
+    }
+}
+
+/* 全セクション共通のコンテナスタイル */
+.services-grid,
+.message-container,
+.news-grid,
+.company-container,
+.recruit-container,
+.recruit-message {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* セクション共通のパディング */
+section {
+    padding: 6rem 0;
+}
+
+/* 背景色のあるセクション */
+#services {
+    background-color: #f8f9fa;
+}
+
+#message {
+    background-color: #fff;
+}
+
+#news {
+    background-color: #f8f9fa;
+}
+
+#company {
+    background-color: #fff;
+}
+
+#recruit {
+    background-color: #f8f9fa;
+}
+
+/* メディアクエリの調整 */
+@media (max-width: 768px) {
+    .services-grid,
+    .message-container,
+    .news-grid,
+    .company-container,
+    .recruit-container,
+    .recruit-message {
+        padding: 0 1.5rem;
+    }
+
+    section {
+        padding: 4rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-grid,
+    .message-container,
+    .news-grid,
+    .company-container,
+    .recruit-container,
+    .recruit-message {
+        padding: 0 1rem;
+    }
+
+    section {
+        padding: 3rem 0;
     }
 }
