@@ -28,4 +28,33 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+});
+
+// LINEモーダル制御
+function openLineModal() {
+    const modal = document.getElementById('lineModal');
+    modal.style.display = 'block';
+    requestAnimationFrame(() => {
+        modal.classList.add('show');
+    });
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLineModal() {
+    const modal = document.getElementById('lineModal');
+    modal.classList.remove('show');
+    setTimeout(() => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }, 300);
+}
+
+// モーダルの外側をクリックしたら閉じる
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('lineModal');
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeLineModal();
+        }
+    });
 }); 
