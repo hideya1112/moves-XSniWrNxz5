@@ -834,7 +834,7 @@ footer {
 /* フッターのモバイル調整 */
 @media (max-width: 768px) {
     footer {
-        padding: 1.5rem 1rem 1rem;
+        padding: 2rem 1rem 1rem;
     }
 
     .footer-nav {
@@ -928,9 +928,10 @@ footer {
         text-align: left;
     }
 
-    /* 不要なメニュー項目を非表示 */
+    /* ソーシャルリンクを含むカラムの表示を維持 */
     .footer-nav-column:nth-child(2) {
-        display: none; /* SUPPORTセクションを非表示 */
+        display: block; /* 非表示設定を削除 */
+        margin-top: 1.5rem; /* 上部にマージンを追加 */
     }
 
     .footer-nav-column h3 {
@@ -949,7 +950,7 @@ footer {
     /* ソーシャルリンクを調整 */
     .social-links {
         justify-content: center;
-        margin-top: 1rem;
+        margin-top: 0.5rem;
     }
 
     .footer-bottom {
@@ -981,6 +982,10 @@ footer {
         padding: 0 0.3rem;
     }
 
+    .footer-nav-column:nth-child(2) {
+        margin-top: 1rem;
+    }
+
     .footer-nav-column h3 {
         font-size: 0.75rem;
         margin-bottom: 0.6rem;
@@ -992,6 +997,15 @@ footer {
 
     .footer-nav-column ul li a {
         font-size: 0.7rem;
+    }
+
+    /* ソーシャルリンクをさらに調整 */
+    .social-links {
+        gap: 1rem;
+    }
+
+    .social-links li:not(:last-child)::after {
+        right: -0.6rem;
     }
 }
 
